@@ -1,0 +1,74 @@
+#This query was created for the purpose of seeing which male actors had either been nominated for or won and Academy Award from 2010 to 2019.
+#The actors varied in age, nomiations, and wins. 
+#Tables did include acotrs that were neither nomiated nor won awards. 
+
+#The first table was the initial set up of actors. 
+#General information was given for the actors (first name, last name, award wins) and input into the created table
+
+/* Create table about the people and what they do here */
+CREATE TABLE Oscar_2010 (id INTEGER, first_name TEXT, last_name TEXT, best_actor INTEGER);
+
+INSERT INTO Oscar_2010 VALUES (1, 'Andrew', 'Garfield', 0);
+INSERT INTO Oscar_2010 VALUES (2, 'Christian', 'Bale', 0);
+INSERT INTO Oscar_2010 VALUES (3, 'Nicolas','Cage', 0);
+INSERT INTO Oscar_2010 VALUES (4, 'Daniel','Craig', 0);
+INSERT INTO Oscar_2010 VALUES (5, 'Daniel', 'Day-Lewis', 1);
+INSERT INTO Oscar_2010 VALUES (6, 'Ben', 'Afleck', 0);
+INSERT INTO Oscar_2010 VALUES (7, 'Gary', 'Oldman', 1);
+INSERT INTO Oscar_2010 VALUES (8, 'Leonardo', 'DiCaprio', 1);
+INSERT INTO Oscar_2010 VALUES (9, 'Tom', 'Holland', 0);
+INSERT INTO Oscar_2010 VALUES (10, 'Steven', 'Yuen', 0);
+
+
+#A second table was created which included the same name information but changed Oscar wins for Oscar nominations. 
+
+CREATE TABLE Noms_2010 (id INTEGER, first_name TEXT, last_name TEXT, Nominations INTEGER);
+
+INSERT INTO Noms_2010 VALUES (1, 'Andrew', 'Garfield', '1');
+INSERT INTO Noms_2010 VALUES (2, 'Christian', 'Bale', '2');
+INSERT INTO Noms_2010 VALUES (3, 'Nicolas', 'Cage', '0');
+INSERT INTO Noms_2010 VALUES (4, 'Daniel', 'Craig', '0');
+INSERT INTO Noms_2010 VALUES (5, 'Daniel', 'Day-Lewis', '2');
+INSERT INTO Noms_2010 VALUES (6, 'Ben', 'Afleck', '0');
+INSERT INTO Noms_2010 VALUES (7, 'Gary', 'Oldman','2');
+INSERT INTO Noms_2010 VALUES (8, 'Leonardo', 'DiCaprio', '3');
+INSERT INTO Noms_2010 VALUES (9, 'Tom', 'Holland', '0');
+INSERT INTO Noms_2010 VALUES (10, 'Steven', 'Yuen', '0');
+
+#After creation the two tables were joined using a simple join.
+
+SELECT * 
+FROM Oscar_2010 
+JOIN Noms_2010;
+
+
+#Following the simple join the table were optimized to only show actors that had won an Oscar and how many times they had done so in the period. 
+
+SELECT oscar_2010.id, oscar_2010.first_name, 
+oscar_2010.last_name, oscar_2010.best_actor
+FROM Oscar_2010
+JOIN noms_2010
+ON oscar_2010.best_actor = noms_2010.nominations
+WHERE oscar_2010.best_actor > 0;
+
+
+#The final table displayed actors that had either been nominated or had won an Oscar in the period.
+#Both tables were joined and the data was optimized to eliminated repeats. 
+
+SELECT oscar_2010.id, oscar_2010.first_name, 
+oscar_2010.last_name, oscar_2010.best_actor, 
+noms_2010.nominations
+FROM oscar_2010
+JOIN noms_2010
+ON oscar_2010.id = noms_2010.id
+WHERE noms_2010.nominations >0;
+
+
+
+
+
+
+
+
+
+
