@@ -1,0 +1,35 @@
+#In this table i created a simple database for a clothing store.
+#Various articles of clothing were input into the table to create an inventory list.  
+
+CREATE TABLE clothes (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, size TEXT, color TEXT, price Integer);
+
+INSERT INTO clothes VALUES (1, 'white_tshirt' , 15, 'large','white', 25);
+INSERT INTO clothes VALUES (2, 'blue_tshirt',12, 'medium','blue', 25);
+INSERT INTO clothes VALUES (3, 'red_longsleeve', 9, 'small','red', 35);
+INSERT INTO clothes VALUES (4, 'flannel', 6,'xlarge', 'multi', 45);
+INSERT INTO clothes VALUES (5, 'hoodie', 15, 'large', 'gray', 55);
+INSERT INTO clothes VALUES (6, 'crewneck', 15, 'large', 'black', 45);
+INSERT INTO clothes VALUES (7, 'scarf', 35, 'OS', 'multi', 30);
+INSERT INTO clothes VALUES (8,'shortmenssocks', 50, 'OS', 'white', 10);
+INSERT INTO clothes VALUES (9, 'longmenssocks', 50, 'OS', 'white', 15);
+INSERT INTO clothes VALUES (10, 'shortwomenssocks', 50, 'OS', 'green', 10);
+INSERT INTO clothes VALUES (11, 'snapback hat', 40, 'OS','multi' ,25);
+INSERT INTO clothes VALUES (12, 'beanie', 12, 'OS', 'multi', 20);
+INSERT INTO clothes VALUES (13, 'backpack', 15, 'OS', 'multi', 35);
+INSERT INTO clothes VALUES (14,'blak_tshirt', 45, 'small', 'black',15);
+INSERT INTO clothes VALUES (15,'redlongsleeve', 1, 'large', 'red', 15);
+
+
+#After inventory database was created a simple SELECT function was used to list the inventory.   
+
+SELECT * FROM clothes;
+
+
+#Clothes were then listed in ascending order by price.    
+
+SELECT * FROM clothes ORDER BY (price);
+
+
+#Finally a total number value of all clothing items was Queried.  
+
+SELECT SUM(quantity) FROM clothes;
