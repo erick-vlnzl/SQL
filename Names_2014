@@ -1,0 +1,52 @@
+##I used data from Big Query which shows the most popular names for both boys and girls in 2014.##
+
+
+##The first query simply shows the names that were used more than 1100 times in 2014.##
+SELECT
+  name
+FROM
+  `my-database-project-0-0.babynames.names_2014`
+WHERE
+  count > 1100;
+  
+##This query only shows the names that were registered as names for Males##
+SELECT
+  *
+FROM
+  `my-database-project-0-0.babynames.names_2014`
+WHERE
+  gender= "M";
+  
+##Query shows names that were registered for Males or any name that was registered more that 10,000 times.##
+SELECT
+  *
+FROM
+  `my-database-project-0-0.babynames.names_2014`
+WHERE
+  gender = "M"
+  OR count > 10000;
+  
+##QUery shows names that were registered more that 15,000 times for either gender##
+SELECT
+  name
+FROM
+  `my-database-project-0-0.babynames.names_2014`
+WHERE
+  count > 15000;
+  
+##Query shows names that for either gender that begin with the letter "A"##
+SELECT
+  name
+FROM
+  `my-database-project-0-0.babynames.names_2014`
+WHERE
+  name LIKE 'A%';
+  
+##Final query shows names for either gender that either begin with or end with "A"##
+SELECT
+  name
+FROM
+  `my-database-project-0-0.babynames.names_2014`
+WHERE
+  name LIKE "A%"
+  AND name LIKE "%a";
